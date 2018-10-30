@@ -32,7 +32,7 @@ class Concentration{
                     }
                 }
             }
-            return nil
+            return foundIndex
         }
         set{
             for index in cards.indices{
@@ -59,8 +59,5 @@ class Concentration{
             
         }
         print("Fim do jogo?")
-        
-        
-        
     }
 }
