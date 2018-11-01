@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         return cardButtons.count/2
     }
     
-    private var emoji =  Dictionary<Int,String>()
+    private var emoji =  Dictionary<Card,String>()
     private var emojiThemes  = [["🎃","👻","👹","🙀","😱","🦇"],
                         ["🦄","🦑","🐰","🐷","🐸","🐮"],
                         ["🚜","🚘","🚑","🚒","🚃","🛵"],
@@ -74,14 +74,14 @@ class ViewController: UIViewController {
 
 
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil{
+        if emoji[card] == nil{
             if emojiChoice.count > 0 {
-                emoji[card.identifier] = emojiChoice.remove(at: emojiChoice.count.arc4random)
+                emoji[card] = emojiChoice.remove(at: emojiChoice.count.arc4random)
             }
         }
         
-        if emoji[card.identifier] != nil {
-            return emoji[card.identifier]!
+        if emoji[card] != nil {
+            return emoji[card]!
         }else{
             return "?"
         }
