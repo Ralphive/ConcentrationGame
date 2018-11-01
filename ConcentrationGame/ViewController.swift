@@ -25,12 +25,29 @@ class ViewController: UIViewController {
     lazy var emojiChoice = emojiThemes[Int.random(in: 0..<emojiThemes.count)]
     
     private var flipCount = 0{
+        //Var initialization do not call the didSet***
         didSet{
-            flipCountLabel.text = "Flips: \(flipCount)"
+          updateFlipCountLabel()
         }
     }
     
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    func updateFlipCountLabel(){
+        let attributes: [NSAttributedString.Key:Any] = [
+            .strokeWidth : 5.0,
+            .strokeColor : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        ]
+        
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        
+        flipCountLabel.attributedText = attributedString
+    }
+    
+    @IBOutlet private weak var flipCountLabel: UILabel!{
+        didSet{
+            updateFlipCountLabel()
+        }
+    }
+    
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBAction private func touchCard(_ sender: UIButton) {
